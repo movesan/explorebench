@@ -13,9 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
-# from django.contrib import admin
+from django.conf.urls import url, include
+from django.contrib import admin
+from rest_framework.documentation import include_docs_urls
+from django.views.generic import TemplateView
 
 urlpatterns = [
-    # url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+    url(r'^index/', TemplateView.as_view(template_name="index.html"), name="index"),
+
+    url(r'docs/', include_docs_urls(title="Explore Bench")),
+
+    # 测试列表返回  r 为转义 ；$ 为正则表达式，匹配参数
+    url(r'deeplearning/', include('deeplearning.urls'))
+
 ]

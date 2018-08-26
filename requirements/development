@@ -1,2 +1,2 @@
-# requirements/dev.txt
+# requirements/development.txt
 -r common.txt

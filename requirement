@@ -1,2 +1,2 @@
-#Install all of our production dependencies only.
--r requirements/development.txt
+# requirement.txt
+-r development.txt
